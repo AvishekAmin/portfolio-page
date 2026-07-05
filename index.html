@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio: Avishek Amin</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300D8FF' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10zM2 12h20'/%3E%3C/svg%3E">
+    <meta name="description" content="Portfolio of Avishek Amin - Final Year Computer Science & Business Systems student at Netaji Subhash Engineering College, Kolkata. Full Stack Developer, MERN Stack specialist.">
+    <meta name="keywords" content="Avishek Amin, Full Stack Developer, MERN Stack, Portfolio, NSEC, Computer Science">
+    <meta name="author" content="Avishek Amin">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Boxicons for Icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Devicons for Tech Logos -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Particle Canvas Background -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Cursor Glow Effect -->
+    <div class="cursor-glow" id="cursor-glow"></div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top-btn hidden" id="scroll-top-btn">
+        <i class='bx bx-up-arrow-alt'></i>
+    </div>
+
+    <!-- Navigation Bar -->
+    <header class="header" id="header">
+        <a href="#" class="logo">Avishek<span>.</span></a>
+
+        <div class="nav-wrapper">
+            <div class="bx bx-sun" id="theme-icon"></div>
+            <nav class="navbar" id="navbar">
+                <a href="#home" class="active">Home</a>
+                <a href="#about">About</a>
+                <a href="#education">Education</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#profiles">Profiles</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+
+        <div class="bx bx-menu" id="menu-icon"></div>
+    </header>
+
+    <!-- ==================== HOME SECTION ==================== -->
+    <section class="home" id="home">
+        <div class="home-content reveal-element">
+            <div class="status-badge">
+                <span class="indicator"></span>
+                Available for new opportunities
+            </div>
+            <h3 class="greeting">Hello, It's Me</h3>
+            <h1 id="hero-name">Avishek Amin</h1>
+            <div class="typewriter-wrapper">
+                <h3><span class="typewriter" id="typewriter"></span><span class="cursor-blink">|</span></h3>
+            </div>
+            <p>I build scalable, production-ready web applications using the MERN Stack, backed by strong problem-solving skills in Java and Data Structures & Algorithms. Passionate about backend development, modern web technologies, and continuously learning Cloud Computing, Docker, Kubernetes, and DevOps to develop reliable, high-performance software.</p>
+
+            <div class="action-row">
+                <div class="social-media">
+                    <a href="https://www.linkedin.com/in/avishekamin" target="_blank" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+                    <a href="https://github.com/AvishekAmin" target="_blank" aria-label="GitHub"><i class='bx bxl-github'></i></a>
+                    <a href="https://leetcode.com/u/avishekamin/" target="_blank" aria-label="LeetCode" style="display: inline-flex; align-items: center; justify-content: center;">
+                        <svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;">
+                            <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="btn-box">
+                    <a href="#projects" class="btn glow-btn">View Projects</a>
+                    <a
+                        href="Avishek_Amin_Resume.pdf"
+                        download
+                        class="btn resume-btn"
+                    >
+                        <i class="fa-solid fa-download"></i>
+                        Download Resume
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="home-img reveal-element">
+            <div class="img-box">
+                <div class="img-ring"></div>
+                <div class="img-ring ring-2"></div>
+                <img src="profile.jpg" alt="Avishek Amin" class="profile-pic">
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT SECTION ==================== -->
+    <section class="about" id="about">
+        <h2 class="heading reveal-element">About <span>Me</span></h2>
+
+        <div class="about-content reveal-element">
+            <div class="about-text glass-card">
+                <div class="about-tag"><i class='bx bx-user'></i> Professional Summary</div>
+                <p>Hi, I'm Avishek Amin, a <span class="highlight">Final Year</span> Computer Science and Business Systems undergraduate at <span class="highlight">Netaji Subhash Engineering College, Kolkata</span>. I am actively seeking Software Development Engineering (SDE), Full-Stack Development, Backend Development, and Software Engineering Internship opportunities.</p>
+                
+                <p>I am passionate about building scalable web applications and solving complex problems through code. My primary expertise lies in the <span class="highlight">MERN Stack</span>, with a strong interest in Backend Development, RESTful API Design, Database Management, and Cloud & DevOps Technologies.</p>
+                
+                <h4 style="margin: 2rem 0 1rem; font-size: 1.8rem; color: var(--accent); font-weight: 700;">What I Work With ~</h4>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2rem; font-size: 1.5rem; line-height: 1.6;">
+                    <li>🔹 <strong>Full-Stack Web Development</strong> using MongoDB, Express.js, React.js, and Node.js</li>
+                    <li>🔹 <strong>Backend Engineering</strong> with Node.js, Express.js, Authentication Systems, and REST APIs</li>
+                    <li>🔹 <strong>Database Design & Management</strong> using MongoDB, Mongoose, MySQL, and SQL</li>
+                    <li>🔹 <strong>Problem Solving</strong>, Data Structures & Algorithms in Java</li>
+                    <li>🔹 <strong>Modern Frontend Development</strong> with React, Redux, Tailwind CSS, Bootstrap, and JavaScript</li>
+                    <li>🔹 <strong>Cloud & DevOps Fundamentals</strong> including CI/CD pipelines, Docker, Kubernetes, Git, and AWS</li>
+                </ul>
+
+                <h4 style="margin: 2rem 0 1rem; font-size: 1.8rem; color: var(--accent); font-weight: 700;">Highlights ~</h4>
+                <ul style="list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem; font-size: 1.5rem; line-height: 1.6;">
+                    <li>✅ Built multiple real-world full-stack projects</li>
+                    <li>✅ Strong foundation in Object-Oriented Programming, Database Management Systems, Operating Systems, and Computer Networks</li>
+                    <li>✅ Active learner focused on software engineering best practices and scalable application development</li>
+                    <li>✅ Consistently improving problem-solving skills through DSA and competitive programming platforms</li>
+                </ul>
+
+                <p style="margin-bottom: 1.5rem;">I enjoy collaborating with developers, contributing to impactful projects, and exploring emerging technologies. I'm always open to networking, learning opportunities, internships, and software development collaborations.</p>
+                <p style="font-weight: 600; color: var(--text-primary); margin-bottom: 2rem;">Let's connect and build something meaningful together.</p>
+
+                <a href="#contact" class="btn glow-btn">Let's Connect</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== EDUCATION SECTION ==================== -->
+    <section class="education" id="education">
+        <h2 class="heading reveal-element">My <span>Education</span></h2>
+
+        <div class="timeline-container">
+            <div class="timeline-box glass-card reveal-element">
+                <div class="timeline-icon"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date"><i class='bx bx-calendar'></i> August 2023 – June 2027</div>
+                    <h3>B. Tech in Computer Science and Business Systems</h3>
+                    <h4>Netaji Subhash Engineering College, Kolkata</h4>
+                    <p><strong>GPA:</strong> 7.2 (Till 5th Semester)</p>
+                </div>
+            </div>
+
+            <div class="timeline-box glass-card reveal-element">
+                <div class="timeline-icon"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date"><i class='bx bx-calendar'></i> March 2022</div>
+                    <h3>Class 12th (WBCHSE)</h3>
+                    <h4>Raiganj Coronation High School (HS)</h4>
+                    <p><strong>Marks:</strong> 474/500 (94.8%)</p>
+                </div>
+            </div>
+
+            <div class="timeline-box glass-card reveal-element">
+                <div class="timeline-icon"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date"><i class='bx bx-calendar'></i> February 2020</div>
+                    <h3>Class 10th (WBBSE)</h3>
+                    <h4>Raiganj Coronation High School (HS)</h4>
+                    <p><strong>Marks:</strong> 652/700 (93.14%)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SKILLS SECTION ==================== -->
+    <section class="skills" id="skills">
+        <h2 class="heading reveal-element">My <span>Skills</span></h2>
+
+        <div class="skills-container">
+            <!-- Card 1 -->
+            <div class="skill-card glass-card reveal-element">
+                <div class="skill-icon-wrap"><i class='bx bx-code-block'></i></div>
+                <h3>Programming Languages</h3>
+                <div class="skill-tags">
+                    <span><i class="devicon-c-plain"></i> C</span>
+                    <span><i class="devicon-cplusplus-plain"></i> C++</span>
+                    <span><i class="devicon-java-plain"></i> Java</span>
+                    <span><i class="devicon-python-plain"></i> Python</span>
+                    <span><i class="devicon-javascript-plain"></i> JavaScript</span>
+                    <span><i class="bx bx-data"></i> SQL</span>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="skill-card glass-card reveal-element">
+                <div class="skill-icon-wrap"><i class='bx bx-desktop'></i></div>
+                <h3>Frontend Development</h3>
+                <div class="skill-tags">
+                    <span><i class="devicon-html5-plain"></i> HTML5</span>
+                    <span><i class="devicon-css3-plain"></i> CSS3</span>
+                    <span><i class="devicon-bootstrap-plain"></i> Bootstrap</span>
+                    <span><i class="devicon-tailwindcss-plain"></i> Tailwind CSS</span>
+                    <span><i class="devicon-react-original"></i> React.js</span>
+                    <span><i class="devicon-redux-original"></i> Redux.js</span>
+                    <span>
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.75 18.25l-6.19-9.155v9.155h-1.68v-11.75h1.56l5.96 8.795v-8.795h1.68v-11.75h-1.33z"/>
+                        </svg> Next.js
+                    </span>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="skill-card glass-card reveal-element">
+                <div class="skill-icon-wrap"><i class='bx bx-server'></i></div>
+                <h3>Backend Development</h3>
+                <div class="skill-tags">
+                    <span><i class='bx bxl-nodejs'></i> Node.js</span>
+                    <span><i class="devicon-express-original"></i> Express.js</span>
+                    <span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="m7 8-4 4 4 4M17 8l4 4-4 4M10 6l4 12"/>
+                        </svg> Embedded JavaScript (EJS)
+                    </span>
+                    <span><i class="devicon-mysql-plain"></i> MySQL</span>
+                    <span><i class="devicon-mongodb-plain"></i> MongoDB</span>
+                    <span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                        </svg> Mongoose ODM
+                    </span>
+                </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="skill-card glass-card reveal-element">
+                <div class="skill-icon-wrap"><i class='bx bx-git-repo-forked'></i></div>
+                <h3>Cloud &amp; DevOps</h3>
+                <div class="skill-tags">
+                    <span><i class="devicon-docker-plain"></i> Docker</span>
+                    <span><i class="bx bx-infinite"></i> CI/CD</span>
+                    <span><i class="devicon-kubernetes-plain"></i> Kubernetes</span>
+                    <span><i class="devicon-git-plain"></i> Git</span>
+                </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="skill-card glass-card reveal-element">
+                <div class="skill-icon-wrap"><i class='bx bx-wrench'></i></div>
+                <h3>Tools &amp; Platforms</h3>
+                <div class="skill-tags">
+                    <span><i class="devicon-vscode-plain"></i> VS Code</span>
+                    <span><i class="devicon-github-original"></i> GitHub</span>
+                    <span><i class="devicon-eclipse-plain"></i> Eclipse</span>
+                    <span><i class="devicon-postman-plain"></i> Postman</span>
+                    <span>
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M15.632 4.746a8.894 8.894 0 0 1 5.29 7.938c1.867 1.47 3.723 3.527 2.86 5.465-.968 2.174-4.415 2.085-8.334.985A7.113 7.113 0 0 1 5.063 14.51C1.623 12.334-.75 9.832.218 7.658c.863-1.939 3.634-1.936 5.975-1.532a8.894 8.894 0 0 1 9.439-1.38ZM1.862 8.39c-.47 1.056 2.056 4.054 8.972 7.133 6.916 3.08 10.834 2.95 11.304 1.894.39-.874-1.212-2.554-3.046-3.856-1.426-1.02-3.38-2.143-5.929-3.278-.694-.309-.964-1.133-.673-1.788.292-.655.933-1.093 2.282-1.156.635-.002.718-.178.747-.329.036-.233-.287-.47-.62-.618-2.647-1.179-5.888-.685-8.134 1.68-2.195-.491-4.514-.556-4.903.318Zm11.083 5.666c-.24.54-.98.735-1.651.436s-1.02-.979-.78-1.518c.24-.54.979-.735 1.65-.436.671.299 1.021.979.78 1.518zm4.02 2.327c.703.202 1.404-.093 1.566-.658.162-.564-.276-1.186-.98-1.387-.702-.202-1.403.093-1.565.658-.162.564.276 1.186.98 1.387zM7.218 9.737c.62.388.87 1.106.559 1.604-.311.498-1.066.588-1.686.2-.62-.387-.87-1.105-.56-1.604.312-.498 1.067-.588 1.687-.2Z"/>
+                        </svg> Hoppscotch
+                    </span>
+                    <span>
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M24 22.525H0L12 1.737z"/>
+                        </svg> Vercel
+                    </span>
+                    <span><i class="devicon-netlify-plain"></i> Netlify</span>
+                    <span>
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.263.007c-3.121-.147-5.744 2.109-6.192 5.082-.018.138-.045.272-.067.405-.696 3.703-3.936 6.507-7.827 6.507-1.388 0-2.691-.356-3.825-.979a.2024.2024 0 0 0-.302.178V24H12v-8.999c0-1.656 1.338-3 2.987-3h2.988c3.382 0 6.103-2.817 5.97-6.244-.12-3.084-2.61-5.603-5.682-5.75"/>
+                        </svg> Render
+                    </span>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ==================== PROJECTS SECTION ==================== -->
+    <section class="projects" id="projects">
+        <h2 class="heading reveal-element">My <span>Projects</span></h2>
+
+        <div class="projects-container">
+            <!-- Project 1 -->
+            <div class="project-box glass-card reveal-element">
+                <div class="project-img" style="height: auto; background: transparent; padding: 1.2rem 1.2rem 0.6rem 1.2rem; display: flex; align-items: center; justify-content: center;">
+                    <img src="havenly.png" alt="Havenly: Luxury Vacation Rentals" style="width: 100%; height: auto; aspect-ratio: 1.63; object-fit: contain; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);">
+                </div>
+                <div class="project-content">
+                    <h4>Havenly: Luxury Vacation Rentals</h4>
+                    <div class="tech-stack">
+                        <span>Node.js</span><span>Express.js</span><span>MongoDB</span><span>Mongoose</span><span>EJS</span><span>Bootstrap</span><span>Passport.js</span><span>Cloudinary</span><span>Mapbox API</span>
+                    </div>
+                    <p>A full-stack vacation rental platform featuring secure user authentication, property management, image uploads, interactive maps, reviews, and responsive design with complete CRUD functionality.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/AvishekAmin/havenly" target="_blank" class="proj-link"><i class='bx bxl-github'></i> GitHub Code</a>
+                        <a href="https://havenly-z7ym.onrender.com/listings" target="_blank" class="proj-link"><i class='bx bx-link-external'></i> Live Link</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-box glass-card reveal-element">
+                <div class="project-img" style="height: auto; background: transparent; padding: 1.2rem 1.2rem 0.6rem 1.2rem; display: flex; align-items: center; justify-content: center;">
+                    <img src="todo.png" alt="Todo List App" style="width: 100%; height: auto; aspect-ratio: 1.63; object-fit: contain; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);">
+                </div>
+                <div class="project-content">
+                    <h4>Todo List App</h4>
+                    <div class="tech-stack">
+                        <span>Redux.js</span><span>React.js</span><span>JavaScript</span><span>HTML</span><span>CSS</span>
+                    </div>
+                    <p>A Redux-based responsive web application with modern task management. It enables users to add, edit, complete, and delete tasks featuring a clean, responsive UI while leveraging centralized state management for predictable and scalable application behavior.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/AvishekAmin/todo-list" target="_blank" class="proj-link"><i class='bx bxl-github'></i> GitHub Code</a>
+                        <a href="https://redux-todo-avishek.netlify.app" target="_blank" class="proj-link"><i class='bx bx-link-external'></i> Live Link</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-box glass-card reveal-element">
+                <div class="project-img" style="height: auto; background: transparent; padding: 1.2rem 1.2rem 0.6rem 1.2rem; display: flex; align-items: center; justify-content: center;">
+                    <img src="weather.png" alt="Weather App" style="width: 100%; height: auto; aspect-ratio: 1.63; object-fit: contain; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.15); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);">
+                </div>
+                <div class="project-content">
+                    <h4>Weather App</h4>
+                    <div class="tech-stack">
+                        <span>React.js</span><span>JavaScript</span><span>HTML</span><span>CSS</span><span>OpenWeatherMap API</span>
+                    </div>
+                    <p>A React-based responsive web application that provides real-time weather information for any city worldwide using the OpenWeatherMap API and seamless user experience across devices.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/AvishekAmin/weather-app" target="_blank" class="proj-link"><i class='bx bxl-github'></i> GitHub Code</a>
+                        <a href="https://react-weather-avishek.netlify.app" target="_blank" class="proj-link"><i class='bx bx-link-external'></i> Live Link</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PROFILES SECTION ==================== -->
+    <section class="profiles" id="profiles">
+        <h2 class="heading reveal-element">My <span>Profiles</span></h2>
+
+        <div class="profiles-wrapper">
+            <!-- Coding Profiles -->
+            <div class="profile-block">
+                <h3 class="profile-block-title reveal-element"><i class='bx bx-code-alt'></i> Competitive Coding Profiles</h3>
+                <div class="profiles-container glass-card reveal-element">
+                    <a href="https://github.com/AvishekAmin" target="_blank" class="profile-item">
+                        <img src="github_logo.png" alt="GitHub" class="custom-svg">
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://leetcode.com/u/avishekamin/" target="_blank" class="profile-item">
+                        <img src="leetcode.png" alt="LeetCode" class="custom-svg">
+                        <span>LeetCode</span>
+                    </a>
+                    <a href="https://www.geeksforgeeks.org/profile/avishekamin" target="_blank" class="profile-item">
+                        <img src="gfg_logo.png" alt="GeeksforGeeks" class="custom-svg gfg-logo">
+                        <span>GeeksforGeeks</span>
+                    </a>
+                    <a href="https://www.codechef.com/users/avishekamin" target="_blank" class="profile-item">
+                        <img src="codechef_logo_transparent3.png" alt="CodeChef" class="custom-svg">
+                        <span>CodeChef</span>
+                    </a>
+                    <a href="https://www.hackerrank.com/profile/AvishekAmin" target="_blank" class="profile-item">
+                        <svg class="hackerrank-svg" viewBox="0 0 132 60" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0,0 H20 V21 H34 V0 H54 V60 H34 V39 H20 V60 H0 Z" fill="#ffffff" />
+                            <rect x="72" y="0" width="60" height="60" fill="#00ea64" />
+                        </svg>
+                        <span>HackerRank</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Social Media Profiles -->
+            <div class="profile-block">
+                <h3 class="profile-block-title reveal-element"><i class='bx bx-share-alt'></i> Social Media Profiles</h3>
+                <div class="profiles-container glass-card reveal-element">
+                    <a href="https://www.linkedin.com/in/avishekamin" target="_blank" class="profile-item">
+                        <img src="linkedin_logo.png" alt="LinkedIn" class="custom-svg social-corners">
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="https://www.instagram.com/avishek.______" target="_blank" class="profile-item">
+                        <img src="instagram_logo2.png" alt="Instagram" class="custom-svg social-corners">
+                        <span>Instagram</span>
+                    </a>
+                    <a href="https://www.facebook.com/avishek207" target="_blank" class="profile-item">
+                        <img src="facebook_logo.png" alt="Facebook" class="custom-svg social-corners">
+                        <span>Facebook</span>
+                    </a>
+                    <a href="https://x.com/avishek______" target="_blank" class="profile-item">
+                        <img src="x_logo.png" alt="X" class="custom-svg social-corners">
+                        <span>X</span>
+                    </a>
+                    <a href="https://t.me/avishekamin" target="_blank" class="profile-item">
+                        <img src="telegram_logo2.png" alt="Telegram" class="custom-svg social-corners">
+                        <span>Telegram</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CONTACT SECTION ==================== -->
+    <section class="contact" id="contact">
+        <h2 class="heading reveal-element">Contact <span>Me!</span></h2>
+
+        <div class="contact-container">
+            <div class="contact-info reveal-element">
+                <h3>Let's build something <span>awesome!</span></h3>
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class='bx bx-envelope'></i>
+                    </div>
+                    <div class="info-text">
+                        <span>Email Me</span>
+                        <a href="mailto:avishekamin207@gmail.com">avishekamin207@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="info-item">
+                    <div class="info-icon">
+                        <i class='bx bx-map'></i>
+                    </div>
+                    <div class="info-text">
+                        <span>Location</span>
+                        <a href="https://www.google.com/maps?q=22.5726,88.3639" target="_blank">Kolkata, India</a>
+                    </div>
+                </div>
+            </div>
+
+            <form action="#" class="contact-form glass-card reveal-element" id="contact-form">
+                <input type="text" placeholder="Your Full Name" required id="contact-name">
+                <input type="email" placeholder="Your Email Address" required id="contact-email">
+                <textarea cols="30" rows="10" placeholder="How can I help you ?" required id="contact-message"></textarea>
+                <a href="mailto:avishekamin207@gmail.com" class="btn glow-btn" id="send-msg-btn" style="text-decoration: none; justify-content: center; width: 100%;">Send Message <i class='bx bxl-telegram'></i></a>
+            </form>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <p class="attribution">Created with ❤ by ~</p>
+                <h3>Avishek Amin</h3>
+                <p><a href="https://www.google.com/maps?q=22.5726,88.3639" target="_blank" class="footer-email-link"><i class='bx bx-map'></i> Kolkata, India</a></p>
+                <p><a href="mailto:avishekamin207@gmail.com" class="footer-email-link"><i class='bx bx-envelope'></i> avishekamin207@gmail.com</a></p>
+
+            </div>
+
+            <div class="footer-right">
+                <div class="footer-links">
+                    <p class="attribution">Connect with me ~</p>
+                    <div class="social-icons">
+                        <a href="https://github.com/AvishekAmin" target="_blank" class="footer-icon" aria-label="GitHub"><i class='bx bxl-github'></i></a>
+                        <a href="https://leetcode.com/u/avishekamin/" target="_blank" class="footer-icon" aria-label="LeetCode" style="display: inline-flex; align-items: center; justify-content: center;">
+                            <svg viewBox="0 0 24 24" fill="currentColor" style="width: 20px; height: 20px;">
+                                <path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/>
+                            </svg>
+                        </a>
+                        <a href="https://www.linkedin.com/in/avishekamin" target="_blank" class="footer-icon" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+                        <a href="mailto:avishekamin207@gmail.com" class="footer-icon" aria-label="Email"><i class='bx bx-envelope'></i></a>
+                        <a href="https://www.instagram.com/avishek.______" target="_blank" class="footer-icon" aria-label="Instagram"><i class='bx bxl-instagram'></i></a>
+                        <a href="https://www.facebook.com/avishek207" target="_blank" class="footer-icon" aria-label="Facebook"><i class='bx bxl-facebook'></i></a>
+                        <a href="https://x.com/avishek______" target="_blank" class="footer-icon" aria-label="X (Twitter)"><i class='bx bxl-twitter'></i></a>
+                        <a href="https://t.me/avishekamin" target="_blank" class="footer-icon" aria-label="Telegram"><i class='bx bxl-telegram'></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Copyright &copy; 2026 Avishek Amin | All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+
+</html>
