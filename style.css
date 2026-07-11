@@ -53,6 +53,11 @@
 
 /* Light Mode */
 body.light-mode {
+    background-color: #f0f4f8;
+    background-image:
+        radial-gradient(ellipse 80% 50% at 20% 40%, rgba(6, 182, 212, 0.06) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 60% at 80% 20%, rgba(139, 92, 246, 0.05) 0%, transparent 70%),
+        radial-gradient(ellipse 70% 50% at 60% 80%, rgba(236, 72, 153, 0.04) 0%, transparent 70%);
     --bg-primary: #f8fafc;
     --bg-secondary: #ffffff;
     --bg-elevated: #f1f5f9;
@@ -88,7 +93,7 @@ body.light-mode .header.sticky .nav-wrapper {
 }
 
 body.light-mode #particle-canvas {
-    opacity: 0.3;
+    opacity: 0.35;
 }
 
 body.light-mode .cursor-glow {
@@ -146,7 +151,12 @@ html {
 
 body {
     font-family: var(--font-main);
-    background-color: var(--bg-primary);
+    background-color: #030712;
+    background-image:
+        radial-gradient(ellipse 80% 50% at 20% 40%, rgba(6, 182, 212, 0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 60% at 80% 20%, rgba(139, 92, 246, 0.07) 0%, transparent 70%),
+        radial-gradient(ellipse 70% 50% at 60% 80%, rgba(236, 72, 153, 0.05) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 40% at 10% 90%, rgba(16, 185, 129, 0.04) 0%, transparent 70%);
     color: var(--text-primary);
     overflow-x: hidden;
     line-height: 1.6;
@@ -201,7 +211,7 @@ a {
 /* =========================================
    Particle Canvas
 ========================================= */
-#particle-canvas {
+.global-bg {
     position: fixed;
     top: 0;
     left: 0;
@@ -209,7 +219,61 @@ a {
     height: 100%;
     z-index: 0;
     pointer-events: none;
-    opacity: 0.6;
+}
+
+/* Ambient glow orbs behind particles */
+.global-bg::before,
+.global-bg::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.35;
+    animation: ambientDrift 20s ease-in-out infinite alternate;
+}
+
+.global-bg::before {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(6, 182, 212, 0.3) 0%, transparent 70%);
+    top: 10%;
+    left: 5%;
+}
+
+.global-bg::after {
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, transparent 70%);
+    bottom: 15%;
+    right: 8%;
+    animation-delay: -10s;
+    animation-direction: alternate-reverse;
+}
+
+@keyframes ambientDrift {
+    0% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -20px) scale(1.05); }
+    66% { transform: translate(-20px, 15px) scale(0.95); }
+    100% { transform: translate(15px, -10px) scale(1.02); }
+}
+
+body.light-mode .global-bg::before {
+    opacity: 0.2;
+    background: radial-gradient(circle, rgba(8, 145, 178, 0.2) 0%, transparent 70%);
+}
+
+body.light-mode .global-bg::after {
+    opacity: 0.15;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+}
+
+#particle-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    opacity: 0.8;
+    position: relative;
+    z-index: 1;
 }
 
 /* =========================================
@@ -782,7 +846,7 @@ section {
    About Section
 ========================================= */
 .about {
-    background: var(--bg-secondary);
+    background: transparent;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -889,7 +953,7 @@ section {
    Education Section (Timeline)
 ========================================= */
 .education {
-    background-color: var(--bg-primary);
+    background-color: transparent;
 }
 
 .timeline-container {
@@ -1002,7 +1066,7 @@ section {
    Skills Section
 ========================================= */
 .skills {
-    background: var(--bg-secondary);
+    background: transparent;
 }
 
 .skills-container {
@@ -1118,7 +1182,7 @@ section {
    Projects Section
 ========================================= */
 .projects {
-    background: var(--bg-primary);
+    background: transparent;
 }
 
 .projects-container {
@@ -1272,7 +1336,7 @@ section {
    Profiles Section
 ========================================= */
 .profiles {
-    background: var(--bg-secondary);
+    background: transparent;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1378,7 +1442,7 @@ section {
    Contact Section
 ========================================= */
 .contact {
-    background: var(--bg-primary);
+    background: transparent;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1525,7 +1589,7 @@ section {
    Footer
 ========================================= */
 .footer {
-    background: var(--bg-secondary);
+    background: transparent;
     padding: 3.5rem 9% 2rem;
     border-top: 1px solid var(--glass-border);
     position: relative;
@@ -1891,6 +1955,22 @@ section {
 
     .footer-info p { justify-content: flex-start; }
     .footer-links { align-items: flex-start; text-align: left; }
+
+    .footer-links .social-icons {
+        gap: 0.8rem;
+        flex-wrap: nowrap;
+    }
+
+    .footer-icon {
+        width: 3.2rem;
+        height: 3.2rem;
+        font-size: 1.5rem;
+    }
+
+    .footer-icon svg {
+        width: 1.5rem !important;
+        height: 1.5rem !important;
+    }
 
     .about-text { padding: 2.5rem; }
 }

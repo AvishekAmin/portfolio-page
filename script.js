@@ -12,11 +12,13 @@ const ctx = canvas.getContext('2d');
 let particles = [];
 let mouseX = 0;
 let mouseY = 0;
+let documentHeight = 0;
 let animationId;
 
 function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    documentHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
 }
 
 class Particle {
@@ -26,62 +28,150 @@ class Particle {
 
     reset() {
         this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2 + 0.5;
+        this.y = Math.random() * documentHeight;
+        this.baseSize = Math.random() * 2.2 + 0.5;
+        this.size = this.baseSize;
         this.speedX = (Math.random() - 0.5) * 0.4;
         this.speedY = (Math.random() - 0.5) * 0.4;
-        this.opacity = Math.random() * 0.5 + 0.1;
-        this.color = Math.random() > 0.7 ? '139, 92, 246' : '6, 182, 212';
+        this.opacity = Math.random() * 0.5 + 0.15;
+
+        // Richer color palette
+        const colorRoll = Math.random();
+        if (colorRoll > 0.7) {
+            this.color = '139, 92, 246';      // purple
+            this.glowColor = 'rgba(139, 92, 246,';
+        } else if (colorRoll > 0.45) {
+            this.color = '6, 182, 212';        // cyan
+            this.glowColor = 'rgba(6, 182, 212,';
+        } else if (colorRoll > 0.25) {
+            this.color = '236, 72, 153';       // pink
+            this.glowColor = 'rgba(236, 72, 153,';
+        } else {
+            this.color = '16, 185, 129';       // emerald
+            this.glowColor = 'rgba(16, 185, 129,';
+        }
+
+        // Pulsation phase
+        this.pulseSpeed = Math.random() * 0.015 + 0.005;
+        this.pulsePhase = Math.random() * Math.PI * 2;
+
+        // Some particles are "star" particles with extra glow
+        this.isStar = Math.random() > 0.85;
     }
 
     update() {
         this.x += this.speedX;
         this.y += this.speedY;
 
-        // Mouse attraction
+        // Gentle size pulsation
+        this.pulsePhase += this.pulseSpeed;
+        this.size = this.baseSize + Math.sin(this.pulsePhase) * 0.3;
+
+        // Mouse attraction in world coordinates
+        const worldMouseY = mouseY + window.scrollY;
         const dx = mouseX - this.x;
-        const dy = mouseY - this.y;
+        const dy = worldMouseY - this.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < 200) {
             this.x += dx * 0.001;
             this.y += dy * 0.001;
         }
 
-        if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+        if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > documentHeight) {
             this.reset();
         }
     }
 
     draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${this.color}, ${this.opacity})`;
-        ctx.fill();
+        const screenY = this.y - window.scrollY;
+        // Only draw if within viewport + safety buffer
+        if (screenY >= -10 && screenY <= canvas.height + 10) {
+            // Draw soft glow halo for star particles
+            if (this.isStar) {
+                ctx.beginPath();
+                ctx.arc(this.x, screenY, this.size * 4, 0, Math.PI * 2);
+                ctx.fillStyle = `${this.glowColor} ${this.opacity * 0.08})`;
+                ctx.fill();
+            }
+
+            // Main particle dot
+            ctx.beginPath();
+            ctx.arc(this.x, screenY, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(${this.color}, ${this.opacity})`;
+            ctx.fill();
+        }
     }
 }
 
 function initParticles() {
-    particles = [];
-    const count = Math.min(80, Math.floor((canvas.width * canvas.height) / 15000));
-    for (let i = 0; i < count; i++) {
-        particles.push(new Particle());
+    const baseCount = Math.min(80, Math.floor((canvas.width * canvas.height) / 15000));
+    const densityRatio = documentHeight / Math.max(1, canvas.height);
+    const targetCount = Math.min(350, Math.floor(baseCount * densityRatio));
+
+    if (particles.length === 0) {
+        for (let i = 0; i < targetCount; i++) {
+            particles.push(new Particle());
+        }
+    } else {
+        if (particles.length < targetCount) {
+            const diff = targetCount - particles.length;
+            for (let i = 0; i < diff; i++) {
+                particles.push(new Particle());
+            }
+        } else if (particles.length > targetCount) {
+            particles.length = targetCount;
+        }
+
+        // Keep all particles within the current bounds
+        particles.forEach(p => {
+            if (p.x > canvas.width) p.x = Math.random() * canvas.width;
+            if (p.y > documentHeight) p.y = Math.random() * documentHeight;
+        });
     }
 }
 
 function drawConnections() {
+    const viewportHeight = canvas.height;
+    const activeParticles = [];
+    
+    // Filter active particles that are inside or near the viewport
     for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-            const dx = particles[i].x - particles[j].x;
-            const dy = particles[i].y - particles[j].y;
+        const p = particles[i];
+        const screenY = p.y - window.scrollY;
+        if (screenY >= -120 && screenY <= viewportHeight + 120) {
+            activeParticles.push({
+                particle: p,
+                screenY: screenY
+            });
+        }
+    }
+
+    // Compare only active particles to optimize calculations
+    for (let i = 0; i < activeParticles.length; i++) {
+        const ap1 = activeParticles[i];
+        const p1 = ap1.particle;
+        const y1 = ap1.screenY;
+
+        for (let j = i + 1; j < activeParticles.length; j++) {
+            const ap2 = activeParticles[j];
+            const p2 = ap2.particle;
+            const y2 = ap2.screenY;
+
+            const dx = p1.x - p2.x;
+            const dy = y1 - y2;
             const dist = Math.sqrt(dx * dx + dy * dy);
 
             if (dist < 120) {
                 const opacity = (1 - dist / 120) * 0.15;
+                // Gradient line using the colors of both particles
+                const gradient = ctx.createLinearGradient(p1.x, y1, p2.x, y2);
+                gradient.addColorStop(0, `rgba(${p1.color}, ${opacity})`);
+                gradient.addColorStop(1, `rgba(${p2.color}, ${opacity})`);
                 ctx.beginPath();
-                ctx.strokeStyle = `rgba(6, 182, 212, ${opacity})`;
+                ctx.strokeStyle = gradient;
                 ctx.lineWidth = 0.5;
-                ctx.moveTo(particles[i].x, particles[i].y);
-                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.moveTo(p1.x, y1);
+                ctx.lineTo(p2.x, y2);
                 ctx.stroke();
             }
         }
@@ -106,6 +196,11 @@ initParticles();
 animateParticles();
 
 window.addEventListener('resize', () => {
+    resizeCanvas();
+    initParticles();
+});
+
+window.addEventListener('load', () => {
     resizeCanvas();
     initParticles();
 });
